@@ -1,0 +1,14 @@
+{
+    "name": "code-lives/chat-gpt",
+    "description": "chatgpt聊天",
+    "type": "library",
+    "license": "MIT",
+    "authors": [{
+        "name": "code-lives",
+        "email": "948870149@qq.com"
+    }],
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": { "ChatGpt\\Chat\\": "src" }
+    }
+}
