@@ -57,3 +57,36 @@
         ]
     ];
 ```
+
+# chatArray 格式说明
+
+第一次用户提问
+
+```
+ $chatArray=[
+        [
+            'role'=>'user',
+            'content'=>'Laravel 有什么优点',
+        ]
+    ];
+```
+
+第二次用户提问,包含了 第一次 chatgpt 回复的内容.如果没有可能上下文丢失，匹配不到最佳内容
+
+```
+ $chatArray=[
+        [
+            'role'=>'user',
+            'content'=>'Laravel 有什么优点',
+        ],
+        ,
+        [
+            'role'=>'assistant',
+            'content'=>'有****优点',
+        ],
+        [
+            'role'=>'user',
+            'content'=>'还有吗？'
+        ]
+    ];
+```
