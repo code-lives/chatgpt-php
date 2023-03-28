@@ -58,7 +58,7 @@
     ];
 ```
 
-# chatArray 格式说明
+### chatArray 格式说明
 
 第一次用户提问
 
