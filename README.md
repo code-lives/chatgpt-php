@@ -1,8 +1,9 @@
-# 安装说明
+# 右上角收藏
+### 安装说明
 
     composer require code-lives/chat-gpt
 
-# Laravel 操作方式 使用 Redis 存储聊天记录
+### Laravel 操作方式 使用 Redis 存储聊天记录
 
 ```php
 
