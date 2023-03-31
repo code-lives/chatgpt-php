@@ -34,9 +34,26 @@ class ChatGpt
         curl_setopt($curl, CURLOPT_POST, true);
         curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($data));
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        // curl_setopt($curl, CURLOPT_TIMEOUT, 20);
         curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
         $response = curl_exec($curl);
+
+        if (curl_errno($curl)) {
+            $error_msg = curl_error($curl);
+            throw new \Exception("Curl Error" . $error_msg);
+        }
         curl_close($curl);
         return json_decode($response, true);
+    }
+    public function WebFormat($string)
+    {
+        $content = preg_replace_callback('/```(\w+)?(.*?)```/s', function ($matches) {
+            $language = $matches[1] ?? 'default';
+            $code = $matches[2];
+            // 对代码块中的内容不进行 HTML 转义和换行符转换
+            $code = str_replace(["\r\n", "\r", "\n"], "\n", $code);
+            return "<pre><code class='hljs $language'>$code</code></pre>";
+        }, $string);
+        return nl2br($content);
     }
 }
